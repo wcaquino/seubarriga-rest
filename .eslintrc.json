@@ -1,0 +1,15 @@
+{
+    "env": {
+        "jest": true
+    },
+    "extends": "airbnb-base",
+    "rules": {
+        "arrow-body-style": "off",
+        "object-curly-newline": [
+            "error",
+            {
+                "multiline": true
+            }
+        ]
+    }
+}
