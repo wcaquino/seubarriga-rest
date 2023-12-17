@@ -22,8 +22,8 @@
   "scripts": {
     "start": "NODE_ENV=prod node src/server.js",
     "test": "NODE_ENV=test jest --coverage --runInBand --forceExit",
-    "lint": "NODE_ENV=test eslint src/** test/** --fix",
-    "secure-mode": "jest --watch --verbose=true"
+    "lint": "eslint src/** test/** --fix",
+    "secure-mode": "NODE_ENV=test jest --watch --verbose=true"
   },
   "husky": {
     "hooks": {
