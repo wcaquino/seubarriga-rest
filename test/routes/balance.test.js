@@ -1,5 +1,5 @@
 const request = require('supertest');
-const moment = require('moment');
+const dayjs = require('dayjs');
 const app = require('../../src/app');
 
 const MAIN_ROUTE = '/v1/balance';
@@ -108,7 +108,7 @@ describe('Ao calcular o saldo do usuário...', () => {
 
   test('Deve considerar transação passada', () => {
     return request(app).post(ROUTE_TRANSACTION)
-      .send({ description: '1', date: moment().subtract({ days: 5 }), ammount: 250, type: 'I', acc_id: 10100, status: true })
+      .send({ description: '1', date: dayjs().subtract(5, 'day'), ammount: 250, type: 'I', acc_id: 10100, status: true })
       .set('authorization', `bearer ${TOKEN}`)
       .then(() => {
         return request(app).get(MAIN_ROUTE)
@@ -126,7 +126,7 @@ describe('Ao calcular o saldo do usuário...', () => {
 
   test('Não deve considerar transação futura', () => {
     return request(app).post(ROUTE_TRANSACTION)
-      .send({ description: '1', date: moment().add({ days: 5 }), ammount: 250, type: 'I', acc_id: 10100, status: true })
+      .send({ description: '1', date: dayjs().add(5, 'day'), ammount: 250, type: 'I', acc_id: 10100, status: true })
       .set('authorization', `bearer ${TOKEN}`)
       .then(() => {
         return request(app).get(MAIN_ROUTE)

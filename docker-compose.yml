@@ -1,0 +1,12 @@
+version: "3"
+services:
+  pg:
+    image: postgres:11
+    container_name: barrigaDB
+    restart: always
+    environment:
+     - POSTGRES_DB=barrigaDB
+     - POSTGRES_USER=admin
+     - POSTGRES_PASSWORD=123456
+    ports:
+     - 5432:5432

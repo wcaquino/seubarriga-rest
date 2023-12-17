@@ -1,4 +1,4 @@
-const moment = require('moment');
+const dayjs = require('dayjs');
 
 exports.seed = (knex) => {
   return knex('users').insert([
@@ -28,16 +28,16 @@ exports.seed = (knex) => {
       // Transacao pendente / Saldo = 2 / Saldo: 8
       { description: '2', date: new Date(), ammount: 16, type: 'I', acc_id: 10104, status: false },
       // Transacao passada / Saldo = 34 / Saldo: 8
-      { description: '2', date: moment().subtract({ days: 5 }), ammount: 32, type: 'I', acc_id: 10104, status: true },
+      { description: '2', date: dayjs().subtract(5, 'day'), ammount: 32, type: 'I', acc_id: 10104, status: true },
       // Transacao futura / Saldo = 34 / Saldo: 8
-      { description: '2', date: moment().add({ days: 5 }), ammount: 64, type: 'I', acc_id: 10104, status: true },
+      { description: '2', date: dayjs().add(5, 'day'), ammount: 64, type: 'I', acc_id: 10104, status: true },
       // Transacao negativa / Saldo = -94 / Saldo: 8
-      { description: '2', date: moment(), ammount: -128, type: 'O', acc_id: 10104, status: true },
+      { description: '2', date: dayjs(), ammount: -128, type: 'O', acc_id: 10104, status: true },
       // Transf / Saldo = 162 / Saldo: -248
-      { description: '2', date: moment(), ammount: 256, type: 'I', acc_id: 10104, status: true },
-      { description: '2', date: moment(), ammount: -256, type: 'O', acc_id: 10105, status: true },
+      { description: '2', date: dayjs(), ammount: 256, type: 'I', acc_id: 10104, status: true },
+      { description: '2', date: dayjs(), ammount: -256, type: 'O', acc_id: 10105, status: true },
       // Transf / Saldo = 162 / Saldo: -248
-      { description: '2', date: moment(), ammount: 512, type: 'I', acc_id: 10103, status: true },
-      { description: '2', date: moment(), ammount: -512, type: 'O', acc_id: 10102, status: true },
+      { description: '2', date: dayjs(), ammount: 512, type: 'I', acc_id: 10103, status: true },
+      { description: '2', date: dayjs(), ammount: -512, type: 'O', acc_id: 10102, status: true },
     ]));
 };
